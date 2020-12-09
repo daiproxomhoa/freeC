@@ -30,8 +30,8 @@ const Content = ({ data, next }) => {
           {data.src && (
             <iframe
               title="copy"
-              width="700px"
-              height="400px"
+              width="900px"
+              height="500px"
               src={data.src}
               scrolling="no"
               allowFullScreen={true}

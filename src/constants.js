@@ -37,7 +37,7 @@ export const dataFake = [
         id: 4,
         type: 'blank',
         label: 'Bài tập 1',
-        title: 'Điền cực của Ampe vào chỗ trống :',
+        title: 'Điền cực của Ampere vào chỗ trống',
         src: question1,
         answers: ['-', '+', "-", "+"],
         position: [{ top: -14, right: 645 }, { top: -14, right: 530 }, { top: -14, right: 280 }, { top: -14, right: 160 }],
@@ -75,7 +75,7 @@ export const dataFake = [
         id: 7,
         type: 'space',
         label: 'Bài tập 4',
-        title: 'Câu 4: Điền vào chỗ trống',
+        title: 'Điền vào chỗ trống',
         questions: [
             'Ampere kế này có giới hạn đo là', { index: 0 }, 'mA./n', 'Ampere kế này có độ chia nhỏ nhất là .', { index: 1 }, 'mA.'
         ],
