@@ -1,4 +1,4 @@
-import question1 from './img/question1.png'
+import question1 from './img/question1.PNG'
 import question2 from './img/question2.png'
 export const dataFake = [
     {
