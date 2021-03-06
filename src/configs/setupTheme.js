@@ -10,7 +10,6 @@ import {
   WHITE
 } from "./colors";
 
-
 export const THEME = {
   primary: PRIMARY,
   secondary: SECONDARY,
@@ -66,7 +65,7 @@ export const MUI_THEME = createMuiTheme({
   typography,
   overrides: {
     MuiPaper: {
-      root: { borderRadius: "6px" },
+      root: { borderRadius: "4px" },
       outlined: {
         border: `1px solid ${GREY_300}`,
       },
@@ -156,7 +155,6 @@ export const MUI_THEME = createMuiTheme({
     },
     MuiFormControl: {
       root: {
-        marginRight: 24,
         minWidth: 150,
       },
     },

@@ -1,7 +1,6 @@
-/* eslint-disable react/destructuring-assignment */
 import React from "react";
 import { Redirect, Route } from "react-router";
-import { ROUTES } from "../constants";
+import { ROUTES } from "../configs/routes";
 
 const ProtectedRoute = (props) => {
   const { auth, ...restProps } = props;

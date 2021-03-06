@@ -1,3 +1,4 @@
+import { Container, Paper, Typography } from "@material-ui/core";
 import React from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,42 +19,51 @@ const Login = (props) => {
   const onSubmit = (data) => dispatch(loginAction(data));
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <FormControlTextField
-        name="user_name"
-        inputRef={register({
-          required: true,
-          maxLength: 50,
-        })}
-        errorMessage={
-          errors.user_name?.type === "required" && "Your input is required"
-        }
-      />
-      <FormControlTextField
-      name="pass_word"
-        type="password"
-        inputRef={register({
-          required: true,
-          maxLength: 50,
-        })}
-        errorMessage={
-          errors.pass_word?.type === "required" && "Your input is required"
-        }
-      />
-      <Row style={{ marginTop: "16px" }}>
-        <LoadingButton
-          style={{ minWidth: 160, marginRight: 32 }}
-          size="large"
-          type="submit"
-          variant="contained"
-          color="secondary"
-          disableElevation
-          loading={loading}
-        >
-          Login
-        </LoadingButton>
-      </Row>
-    </form>
+    <Container>
+      <div className="d-flex-center flex-1" style={{ height: "100vh" }}>
+        <Paper variant="outlined">
+          <Typography variant="h6">Login</Typography>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <FormControlTextField
+              name="user_name"
+              inputRef={register({
+                required: true,
+                maxLength: 50,
+              })}
+              errorMessage={
+                errors.user_name?.type === "required" &&
+                "Your input is required"
+              }
+            />
+            <FormControlTextField
+              name="pass_word"
+              type="password"
+              inputRef={register({
+                required: true,
+                maxLength: 50,
+              })}
+              errorMessage={
+                errors.pass_word?.type === "required" &&
+                "Your input is required"
+              }
+            />
+            <Row className="d-flex-center" >
+              <LoadingButton
+                style={{ minWidth: 160, marginRight: 32 }}
+                size="large"
+                type="submit"
+                variant="contained"
+                color="secondary"
+                disableElevation
+                loading={loading}
+              >
+                Login
+              </LoadingButton>
+            </Row>
+          </form>
+        </Paper>
+      </div>
+    </Container>
   );
 };
 

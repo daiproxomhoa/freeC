@@ -5,7 +5,7 @@ import "./App.css";
 import LoadingIcon from "./common/LoadingIcon";
 import ProtectedRoute from "./common/ProtectedRoute";
 import RedirectRoute from "./common/RedirectRoute";
-import { ROUTES } from "./constants";
+import { ROUTES } from "./configs/routes";
 import Home from "./modules/home/Home";
 import Login from "./modules/login/pages/Login";
 import { validateToken } from "./redux/auth/authReducer";
@@ -16,12 +16,16 @@ const App = ({ auth }) => {
   React.useEffect(() => {
     dispatch(validateToken());
   }, [dispatch]);
-  
+
   return (
     <React.Suspense fallback={<LoadingIcon style={{ marginTop: 240 }} />}>
       <Switch>
         <RedirectRoute auth={auth.auth} path={ROUTES.login} component={Login} />
-        <ProtectedRoute auth={auth.auth} path={ROUTES.home} component={Home} />
+        <ProtectedRoute
+          auth={auth.auth}
+          path={ROUTES.home}
+          component={Home}
+        />
       </Switch>
     </React.Suspense>
   );

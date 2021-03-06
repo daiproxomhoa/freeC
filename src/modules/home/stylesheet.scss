@@ -1,0 +1,21 @@
+@import "src/configs/colors.module.scss";
+
+.home {
+  .tab-container {
+    background: $GREY_100;
+    box-shadow: inset 1px 0px 8px -2px;
+  }
+  .body-container {
+  }
+  .card {
+    width: 25%;
+    &__content {
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    &__image {
+      background: $GREY_300;
+      height: 250px;
+    }
+  }
+}

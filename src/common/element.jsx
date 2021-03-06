@@ -1,6 +1,7 @@
 import { createStyles, InputBase, withStyles } from "@material-ui/core";
 import styled from "styled-components";
 import { GREY_100, GREY_400, GREY_500, RED } from "../configs/colors";
+import { HEADER_HEIGHT } from "../layout/constants";
 
 export const Row = styled.div`
   display: flex;
@@ -12,6 +13,13 @@ export const Col = styled.div`
   flex-direction: column;
 `;
 
+
+export const PageWrapper = styled.div`
+  min-height: ${window.innerHeight - HEADER_HEIGHT}px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+`;
 
 export const BootstrapInput = withStyles((theme) =>
   createStyles({
