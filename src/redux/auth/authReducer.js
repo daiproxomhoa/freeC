@@ -2,6 +2,7 @@ import { get, remove, set } from "js-cookie";
 import { createAction, getType } from "typesafe-actions";
 import { ACCESS_TOKEN } from "../../constants";
 import { clearStoreAfterLogout } from "../reducers";
+import {profileData} from "./constants";
 
 export const setAuth = createAction("auth/setAuth", (val) => ({
   val,
@@ -35,8 +36,8 @@ export function validateToken(data) {
   return (dispatch, getState) => {
     const accessToken = get(ACCESS_TOKEN);
     if (accessToken === "OK") {
+      dispatch(setUserData(profileData));
       dispatch(setAuth(true));
-      dispatch(setUserData(data));
     } else {
       dispatch(clearStoreAfterLogout());
       remove(ACCESS_TOKEN);

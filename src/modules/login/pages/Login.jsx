@@ -21,7 +21,7 @@ const Login = (props) => {
   return (
     <Container>
       <div className="d-flex-center flex-1" style={{ height: "100vh" }}>
-        <Paper variant="outlined">
+        <Paper variant="outlined" className="p-12">
           <Typography variant="h6">Login</Typography>
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormControlTextField

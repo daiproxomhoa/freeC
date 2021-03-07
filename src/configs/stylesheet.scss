@@ -1,7 +1,16 @@
 @import "src/configs/colors.module.scss";
+
 * {
   box-sizing: border-box;
 }
+
+.position-stick {
+  position: sticky;
+  top: 0px;
+  z-index: 999;
+  background: white;
+}
+
 .d-none {
   display: none;
 }
@@ -33,6 +42,7 @@
 .d-flex {
   display: flex;
 }
+
 .flex-1 {
   flex: 1;
 }
@@ -54,6 +64,7 @@
 .d-flex-column {
   flex-direction: column;
 }
+
 .border-round {
   border-radius: 4px;
 }
@@ -101,21 +112,27 @@
 .p-0 {
   padding: 0px;
 }
+
 .p-4 {
   padding: 4px;
 }
+
 .p-8 {
   padding: 8px;
 }
+
 .p-12 {
   padding: 12px;
 }
+
 .p-16 {
   padding: 16px;
 }
+
 .p-20 {
   padding: 20px;
 }
+
 .p-24 {
   padding: 24px;
 }
@@ -123,21 +140,27 @@
 .p-l-0 {
   padding-left: 0px;
 }
+
 .p-l-4 {
   padding-left: 4px;
 }
+
 .p-l-8 {
   padding-left: 8px;
 }
+
 .p-l-12 {
   padding-left: 12px;
 }
+
 .p-l-16 {
   padding-left: 16px;
 }
+
 .p-l-20 {
   padding-left: 20px;
 }
+
 .p-l-24 {
   padding-left: 24px;
 }
@@ -145,21 +168,27 @@
 .p-r-0 {
   padding-right: 0px;
 }
+
 .p-r-4 {
   padding-right: 4px;
 }
+
 .p-r-8 {
   padding-right: 8px;
 }
+
 .p-r-12 {
   padding-right: 12px;
 }
+
 .p-r-16 {
   padding-right: 16px;
 }
+
 .p-r-20 {
   padding-right: 20px;
 }
+
 .p-r-24 {
   padding-right: 24px;
 }
@@ -167,21 +196,27 @@
 .p-b-0 {
   padding-bottom: 0px;
 }
+
 .p-b-4 {
   padding-bottom: 4px;
 }
+
 .p-b-8 {
   padding-bottom: 8px;
 }
+
 .p-b-12 {
   padding-bottom: 12px;
 }
+
 .p-b-16 {
   padding-bottom: 16px;
 }
+
 .p-b-20 {
   padding-bottom: 20px;
 }
+
 .p-b-24 {
   padding-bottom: 24px;
 }
@@ -189,21 +224,27 @@
 .p-t-0 {
   padding-top: 0px;
 }
+
 .p-t-4 {
   padding-top: 4px;
 }
+
 .p-t-8 {
   padding-top: 8px;
 }
+
 .p-t-12 {
   padding-top: 12px;
 }
+
 .p-t-16 {
   padding-top: 16px;
 }
+
 .p-t-20 {
   padding-top: 20px;
 }
+
 .p-t-24 {
   padding-top: 24px;
 }
@@ -211,21 +252,27 @@
 .p-l-0 {
   padding-left: 0px;
 }
+
 .p-l-4 {
   padding-left: 4px;
 }
+
 .p-l-8 {
   padding-left: 8px;
 }
+
 .p-l-12 {
   padding-left: 12px;
 }
+
 .p-l-16 {
   padding-left: 16px;
 }
+
 .p-l-20 {
   padding-left: 20px;
 }
+
 .p-l-24 {
   padding-left: 24px;
 }
@@ -235,21 +282,27 @@
 .m-0 {
   margin: 0px;
 }
+
 .m-4 {
   margin: 4px;
 }
+
 .m-8 {
   margin: 8px;
 }
+
 .m-12 {
   margin: 12px;
 }
+
 .m-16 {
   margin: 16px;
 }
+
 .m-20 {
   margin: 20px;
 }
+
 .m-24 {
   margin: 24px;
 }
@@ -257,21 +310,27 @@
 .m-r-0 {
   margin-right: 0px;
 }
+
 .m-r-4 {
   margin-right: 4px;
 }
+
 .m-r-8 {
   margin-right: 8px;
 }
+
 .m-r-12 {
   margin-right: 12px;
 }
+
 .m-r-16 {
   margin-right: 16px;
 }
+
 .m-r-20 {
   margin-right: 20px;
 }
+
 .m-r-24 {
   margin-right: 24px;
 }
@@ -279,21 +338,27 @@
 .m-l-0 {
   margin-left: 0px;
 }
+
 .m-l-4 {
   margin-left: 4px;
 }
+
 .m-l-8 {
   margin-left: 8px;
 }
+
 .m-l-12 {
   margin-left: 12px;
 }
+
 .m-l-16 {
   margin-left: 16px;
 }
+
 .m-l-20 {
   margin-left: 20px;
 }
+
 .m-l-24 {
   margin-left: 24px;
 }
@@ -301,21 +366,27 @@
 .m-b-0 {
   margin-bottom: 0px;
 }
+
 .m-b-4 {
   margin-bottom: 4px;
 }
+
 .m-b-8 {
   margin-bottom: 8px;
 }
+
 .m-b-12 {
   margin-bottom: 12px;
 }
+
 .m-b-16 {
   margin-bottom: 16px;
 }
+
 .m-b-20 {
   margin-bottom: 20px;
 }
+
 .m-b-24 {
   margin-bottom: 24px;
 }
@@ -323,21 +394,27 @@
 .m-t-0 {
   margin-top: 0px;
 }
+
 .m-t-4 {
   margin-top: 4px;
 }
+
 .m-t-8 {
   margin-top: 8px;
 }
+
 .m-t-12 {
   margin-top: 12px;
 }
+
 .m-t-16 {
   margin-top: 16px;
 }
+
 .m-t-20 {
   margin-top: 20px;
 }
+
 .m-t-24 {
   margin-top: 24px;
 }

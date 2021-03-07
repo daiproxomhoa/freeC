@@ -3,7 +3,6 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link as RouterLink } from "react-router-dom";
 import styled from "styled-components";
-import { getCurrentRole } from "../layout/utils";
 
 export const RawLink = styled(RouterLink)`
   text-decoration: none;
@@ -44,17 +43,6 @@ const Link = React.forwardRef((props, ref) => {
     };
   }, [router.location.pathname, router.location.state, to]);
 
-  const isSufficientRole = React.useMemo(() => {
-    const check = getCurrentRole(
-      userData?.roleInfo?.permissions,
-      permission || getPropsTo.pathname
-    );
-    return check;
-  }, [getPropsTo.pathname, permission, userData]);
-
-  if (!isSufficientRole) {
-    return null;
-  }
   return (
     <Tooltip title={tooltip || ""} placement={placement || "top"} arrow>
       <RawLink to={getPropsTo } {...rest}>
@@ -68,7 +56,7 @@ const Link = React.forwardRef((props, ref) => {
 const mapStateToProps = (state) => {
   return {
     router: state.router,
-    userData: state.account.userData,
+    userData: state.auth.userData,
   };
 };
 
