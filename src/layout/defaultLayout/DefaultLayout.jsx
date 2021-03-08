@@ -1,11 +1,10 @@
-import {Container} from "@material-ui/core";
 import * as React from "react";
-import {Redirect, Route, Switch, useLocation} from "react-router";
-import {Col, PageWrapper} from "../../common/element";
+import { Redirect, Route, Switch, useLocation } from "react-router";
+import { Col, PageWrapper } from "../../common/element";
 import LoadingIcon from "../../common/LoadingIcon";
-import {GREY_100} from "../../configs/colors";
-import {ROUTES, ROUTES_TAB} from "../../configs/routes";
-import {flatRoutes} from "../utils";
+import { GREY_100 } from "../../configs/colors";
+import { ROUTES, ROUTES_TAB } from "../../configs/routes";
+import { flatRoutes } from "../utils";
 import DefaultFooter from "./DefaultFooter";
 import DefaultHeader from "./DefaultHeader";
 
@@ -26,6 +25,7 @@ const DefaultLayout = (props) => {
           }}
         >
           <DefaultHeader listRoutes={listRoutes} />
+          <div className="flex-1">
             <React.Suspense
               fallback={<LoadingIcon style={{ marginTop: 240 }} />}
             >
@@ -44,6 +44,7 @@ const DefaultLayout = (props) => {
                 <Redirect to={ROUTES.notFound404} />
               </Switch>
             </React.Suspense>
+          </div>
           <DefaultFooter />
         </Col>
       </PageWrapper>

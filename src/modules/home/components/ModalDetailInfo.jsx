@@ -1,10 +1,10 @@
-import {Dialog, IconButton, Typography} from "@material-ui/core";
-import React from "react";
-import "./stylesheet.scss";
+import { Dialog, IconButton, Typography } from "@material-ui/core";
 import CloseIcon from '@material-ui/icons/Close';
+import React from "react";
 import ImageGallery from 'react-image-gallery';
 import 'react-image-gallery/styles/css/image-gallery.css';
-import {GREY_500} from "../../../configs/colors";
+import { GREY_500 } from "../../../configs/colors";
+import "./stylesheet.scss";
 
 const ModalDetailInfo = (props) => {
     const {data, onClose} = props;

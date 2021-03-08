@@ -1,12 +1,13 @@
+import moment from "moment";
+import abivin from "../../img/abivin.PNG";
+import one_0 from "../../img/one_0.PNG";
+import one_1 from "../../img/one_1.PNG";
+import one_2 from "../../img/one_2.PNG";
 import tripi_0 from "../../img/tripi_0.PNG";
 import tripi_1 from "../../img/tripi_1.PNG";
 import tripi_2 from "../../img/tripi_2.PNG";
 import tripi_3 from "../../img/tripi_3.PNG";
-import one_0 from "../../img/one_0.PNG";
-import one_1 from "../../img/one_1.PNG";
-import one_2 from "../../img/one_2.PNG";
 import vr_0 from "../../img/vr_0.PNG";
-import moment from "moment";
 
 export const profileData = {
   avatar:
@@ -72,6 +73,7 @@ export const profileData = {
       title: "Frontend Developer at Abivin – logistics optimization platform",
       start: 1546328430000,
       end: 1559374830000,
+      image: abivin,
       activity: [
         {
           content: [

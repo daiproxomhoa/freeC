@@ -1,4 +1,5 @@
 import { createStyles, InputBase, withStyles } from "@material-ui/core";
+import MaskedInput from "react-text-mask";
 import styled from "styled-components";
 import { GREY_100, GREY_400, GREY_500, RED } from "../configs/colors";
 
@@ -18,6 +19,65 @@ export const PageWrapper = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const DateMaskCustomRange = (props) => {
+  const { inputRef, placeholder, ...other } = props;
+
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[
+        /\d/,
+        /\d/,
+        "/",
+        /\d/,
+        /\d/,
+        "/",
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+        " ",
+        "-",
+        " ",
+        /\d/,
+        /\d/,
+        "/",
+        /\d/,
+        /\d/,
+        "/",
+        /\d/,
+        /\d/,
+        /\d/,
+        /\d/,
+      ]}
+      placeholder={placeholder}
+      guide={false}
+      // placeholderChar="\u2000"
+      keepCharPositions
+    />
+  );
+};
+
+export const DateMaskCustomSingle = (props) => {
+  const { inputRef, placeholder, ...other } = props;
+
+  return (
+    <MaskedInput
+      {...other}
+      ref={(ref) => {
+        inputRef(ref ? ref.inputElement : null);
+      }}
+      mask={[/\d/, /\d/, "/", /\d/, /\d/, "/", /\d/, /\d/, /\d/, /\d/]}
+      placeholder={placeholder}
+      guide={false}
+    />
+  );
+};
+
 
 export const BootstrapInput = withStyles((theme) =>
   createStyles({
