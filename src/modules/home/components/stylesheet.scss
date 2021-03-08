@@ -9,6 +9,15 @@
   .body-container {
   }
 
+  .wrap-paper {
+    border-radius: 4px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    overflow: hidden;
+  }
+
   .card {
     width: 25%;
     cursor: pointer;

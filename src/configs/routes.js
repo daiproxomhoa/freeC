@@ -1,4 +1,6 @@
 import NotFoundBox from "../common/NotFoundBox";
+import About from "../modules/about/About";
+import Contact from "../modules/contact/Contact";
 import Home from "../modules/home/page/Home";
 import Login from "../modules/login/pages/Login";
 
@@ -27,11 +29,11 @@ export const ROUTES_TAB = [
     {
         name: "About Page",
         path: ROUTES.about,
-        component: Login,
+        component: About,
     },
     {
         name: "Contact Page",
         path: ROUTES.contact,
-        component: Home,
+        component: Contact,
     },
 ];

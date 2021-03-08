@@ -15,6 +15,24 @@ export const profileData = {
   name: "Vũ Tiến Đại",
   birthday: "01/01/1997",
   school: "VNU University of Science",
+  habit: ["Bóng đá", "Bóng bàn", "Chạy bộ", "Karaoke"],
+  character: [
+    "Cầu toàn",
+    "Hòa đồng",
+    "thẳng thắn",
+    "thật thà",
+    "nhiệt huyết",
+    "Ghét sự lươn lẹo",
+    "Đôi lúc hơi bảo thủ nhưng nếu thấy sai sẽ nhận",
+  ],
+  plan: [
+    "Phát triển bản thân ở một môi trường chuyên nghiệp",
+    "Đi sâu vào lĩnh vực mình mong muốn",
+    "Được làm việc mới những người tài giỏi",
+    "Được làm những việc mình giỏi nhất",
+    "Trong 4 năm tới cố găng lên techLead",
+    
+  ],
   profile: [
     {
       title: "Frontend Developer at Abivin – logistics optimization platform",

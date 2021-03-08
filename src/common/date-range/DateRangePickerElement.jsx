@@ -3,20 +3,22 @@ import {
   FormControl,
   IconButton,
   InputAdornment,
-  RootRef
+  RootRef,
 } from "@material-ui/core";
 import moment from "moment";
 import React from "react";
 import { DayPickerRangeController } from "react-dates";
+import { CSSTransition } from "react-transition-group";
+import { PRIMARY } from "../../configs/colors";
+import { DATE_FORMAT } from "../../models/moment";
+import { ReactComponent as IconCalender } from "../../img/ic_calendar.svg";
+import FormControlTextField from "../FormControlTextField";
+import { Col, DateMaskCustomRange, DateMaskCustomSingle } from "../element";
+import styles from "./styles.module.scss";
 import "react-dates/initialize";
 import "react-dates/lib/css/_datepicker.css";
-import { PRIMARY } from "../../configs/colors";
-import { ReactComponent as IconCalender } from "../../img/ic_calendar.svg";
-import { DATE_FORMAT } from "../../models/moment";
-import { DateMaskCustomRange, DateMaskCustomSingle } from "../element";
-import FormControlTextField from "../FormControlTextField";
 
-export const renderMonthText = (month) => month.format("MMMM - YYYY");
+const renderMonthText = (month) => month.format("MMMM - YYYY");
 
 export function isDayHighlighted(day, start, end) {
   return moment().startOf("day").isSame(day.startOf("day")) ? (
@@ -37,13 +39,13 @@ export function isDayHighlighted(day, start, end) {
   );
 }
 
-const DateRangePickerElement = (props) => {
+const DateRangeFormControl = (props) => {
   const {
     onChange,
     startDate,
     endDate,
-    required,
-    error,
+    optional,
+    errorMessage,
     inputStyle,
     labelStyle,
     style,
@@ -54,11 +56,11 @@ const DateRangePickerElement = (props) => {
     placeholder,
     startAdornment,
     disableAdornment,
+    disabledHelper,
     isOutsideRange,
     onClickBtn,
     renderString,
     iRef,
-    inputRef: inputRefTmp,
     idFocus,
     direction,
   } = props;
@@ -82,10 +84,11 @@ const DateRangePickerElement = (props) => {
   );
   const [start, setStartDate] = React.useState();
   const [end, setEndDate] = React.useState();
-  const [isFocused, setFocus] = React.useState(true);
+  const [isFocused, setFocus] = React.useState(false);
   const [height, setHeight] = React.useState(0);
+
   const parent = iRef || React.createRef();
-  const inputRef = inputRefTmp || React.createRef();
+  const inputRef = React.useRef();
   const innerRef = React.useRef();
 
   const defaultOutsideRange = React.useCallback((e) => {
@@ -120,16 +123,7 @@ const DateRangePickerElement = (props) => {
         setDateFormatStr(customString(start, end, singleValue));
       }
     },
-    [
-      isFocused,
-      inputRef,
-      parent,
-      onChange,
-      start,
-      end,
-      customString,
-      singleValue,
-    ]
+    [isFocused, parent, onChange, start, end, customString, singleValue]
   );
 
   const textChange = React.useCallback(
@@ -191,7 +185,6 @@ const DateRangePickerElement = (props) => {
         color: isFocused ? "black" : undefined,
         ...style,
       }}
-      fullWidth
       role="group"
       tabIndex={-1}
       ref={parent}
@@ -215,7 +208,7 @@ const DateRangePickerElement = (props) => {
         className="wrap-paper"
         style={{
           boxShadow: isFocused ? "0px 4px 8px rgba(0, 0, 0, 0.25)" : undefined,
-          zIndex: isFocused ? "100px" : "0px",
+          zIndex: isFocused ? 100 : 0,
           backgroundColor: isFocused
             ? "rgba(255,255,255,1)"
             : "rgba(255,255,255,0)",
@@ -224,6 +217,7 @@ const DateRangePickerElement = (props) => {
               ? "-12px 0px"
               : "-12px"
             : undefined,
+          transition: "none",
           right: direction === "left" ? 0 : undefined,
           left:
             direction === "left"
@@ -232,7 +226,6 @@ const DateRangePickerElement = (props) => {
               ? "50%"
               : undefined,
           transform: direction === "center" ? "translateX(-50%)" : undefined,
-          minWidth: isFocused ? "calc(100% + 24px)" : undefined,
         }}
       >
         <div style={{ padding: isFocused ? "12px 12px 0px 12px" : undefined }}>
@@ -259,13 +252,13 @@ const DateRangePickerElement = (props) => {
               }
               fullWidth
               value={dateFormatStr}
-              required={required}
+              optional={optional}
               inputProps={{ style: { width: "100%" } }}
               onChange={(e) => {
                 setDateFormatStr(e.target.value);
                 textChange(e.target.value);
               }}
-              error={error}
+              errorMessage={errorMessage}
               inputComponent={
                 isFocused
                   ? singleValue
@@ -293,65 +286,78 @@ const DateRangePickerElement = (props) => {
                   </InputAdornment>
                 )
               }
+              disabledHelper={disabledHelper}
             />
           </RootRef>
         </div>
-
-        <div
-          key={1}
-          className={"d-flex d-flex-column"}
-          style={{
-            transition: "all 300ms ease",
-            backgroundColor: "white",
-            width: isFocused ? undefined : "0px",
-            alignItems: "center",
+        <CSSTransition
+          timeout={200}
+          in={isFocused}
+          classNames={{
+            enter: styles.enter,
+            enterActive: styles.enterActive,
+            exit: styles.leave,
+            exitActive: styles.leaveActive,
           }}
+          unmountOnExit
         >
-          <DayPickerRangeController
-            hideKeyboardShortcutsPanel
-            noBorder
-            daySize={40}
-            numberOfMonths={numberOfMonths || 1}
-            startDate={start || null}
-            endDate={end || null}
-            focusedInput={focusedInput}
-            onDatesChange={(value) => {
-              onChange(
-                value.startDate || undefined,
-                value.endDate || undefined
-              );
+          <Col
+            key={1}
+            style={{
+              transition: "all 300ms ease",
+              backgroundColor: "white",
+              width: isFocused ? undefined : 0,
+              alignItems: "center",
             }}
-            onFocusChange={(text) =>
-              setFocusedInput(singleValue ? "startDate" : text || "startDate")
-            }
-            isOutsideRange={(e) =>
-              isOutsideRange ? isOutsideRange(e) : defaultOutsideRange(e)
-            }
-            minimumNights={0}
-            renderMonthText={renderMonthText}
-            renderDayContents={(day) => isDayHighlighted(day, start, end)}
-          />
-          <div style={{ alignSelf: "flex-end", padding: "0px 12px 12px 0px" }}>
-            <Button
-              id="Search_flight.Flight_Departure"
-              disableElevation
-              style={{ minWidth: "140px" }}
-              size="large"
-              color="primary"
-              variant="contained"
-              onClick={() => {
-                parent.current?.blur();
-                inputRef.current?.blur();
-                onClickBtn && onClickBtn();
+          >
+            <DayPickerRangeController
+              hideKeyboardShortcutsPanel
+              noBorder
+              daySize={40}
+              numberOfMonths={numberOfMonths || 1}
+              startDate={start || null}
+              endDate={end || null}
+              focusedInput={focusedInput}
+              onDatesChange={(value) => {
+                onChange(
+                  value.startDate || undefined,
+                  value.endDate || undefined
+                );
               }}
+              onFocusChange={(text) =>
+                setFocusedInput(singleValue ? "startDate" : text || "startDate")
+              }
+              isOutsideRange={(e) =>
+                isOutsideRange ? isOutsideRange(e) : defaultOutsideRange(e)
+              }
+              minimumNights={0}
+              renderMonthText={renderMonthText}
+              renderDayContents={(day) => isDayHighlighted(day, start, end)}
+            />
+            <div
+              style={{ alignSelf: "flex-end", padding: "0px 12px 12px 0px" }}
             >
-              Accept
-            </Button>
-          </div>
-        </div>
+              <Button
+                id="Search_flight.Flight_Departure"
+                disableElevation
+                style={{ minWidth: "140px" }}
+                size="large"
+                color="secondary"
+                variant="contained"
+                onClick={() => {
+                  parent.current?.blur();
+                  inputRef.current?.blur();
+                  onClickBtn && onClickBtn();
+                }}
+              >
+                Accept
+              </Button>
+            </div>
+          </Col>
+        </CSSTransition>
       </div>
     </FormControl>
   );
 };
 
-export default DateRangePickerElement;
+export default DateRangeFormControl;
